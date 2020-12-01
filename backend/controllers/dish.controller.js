@@ -32,12 +32,9 @@ dishController.getDish = async (req,res) =>{
 }
 
 dishController.updateDish = async (req,res) =>{
-  const id = req.params.id;
-
-  const d = await dish.findOne({id:id})
+  const _id = req.params.id;
 
   const upDish ={
-    id: req.body.id,
     type:req.body.type,
     name:req.body.name,
     cost:req.body.cost,
@@ -45,7 +42,7 @@ dishController.updateDish = async (req,res) =>{
     benefict:req.body.benefict
   }  
 
- await dish.findByIdAndUpdate(d._id,{$set:upDish});
+ await dish.findByIdAndUpdate(_id,{$set:upDish});
 
   res.json({status:'Platillo actualizado'});
 }
@@ -53,11 +50,9 @@ dishController.updateDish = async (req,res) =>{
 
 dishController.deleteDish = async (req,res) =>{
   
-  const id = req.params.id;
+  const _id = req.params.id;
 
-  const d = await dish.findOne({id:id})
-
-   await dish.findByIdAndDelete(d._id);
+   await dish.findByIdAndDelete(_id);
 
   res.json({status:'Platillo eliminado'});
 }

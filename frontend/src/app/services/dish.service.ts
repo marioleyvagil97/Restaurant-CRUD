@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Dish } from '../models/dish';
+import {DishesComponent} from '../components/dishes/dishes.component'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  selectedDish: Dish = new Dish;
+  selectedDish: Dish;
   dish: Dish[] = [];
-  readonly URL_API = 'http://localhost:3000/api/dishes';
+  readonly URL_API = 'http://localhost:3000/api/dishes/';
 
-  constructor(private http: HttpClient) { }
+  dishesArray: Dish[] = [];
+  constructor(private http: HttpClient) {
+
+    this.selectedDish = new Dish();
+    
+
+   }
 
   getDishes(){
-    return this.http.get(this.URL_API)
+
+    
+    return this.http.get<Dish[]>(this.URL_API);
   }
 
   postDish( dish: Dish){
@@ -22,7 +31,7 @@ export class DishService {
   }
 
   putDish(dish:Dish){
-    return this.http.put(this.URL_API+ `/${dish.id}`,dish);
+    return this.http.put(this.URL_API+ `/${dish._id}`,dish);
   }
 
   deleteDish(id:string){
