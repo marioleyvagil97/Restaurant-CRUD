@@ -3,70 +3,36 @@
     <div class="card">
       <div class="card-body">
         <form #dishForm="ngForm" (ngSubmit)="addDish(dishForm)">
-            <input type="hidden" name="_id" [(ngModel)] = "dishService.selectedDish._id">
+          <input type="hidden" name="_id" [(ngModel)]="dishService.selectedDish._id">
           <div class="form-group">
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              placeholder="Escribe el nombre del platillo"
-              [(ngModel)]="dishService.selectedDish.name"
-            />
+            <input type="text" name="name" class="form-control" placeholder="Escribe el nombre del platillo"
+              [(ngModel)]="dishService.selectedDish.name" />
           </div>
 
           <div class="form-group">
-            <input
-              type="text"
-              name="type"
-              class="form-control"
-              placeholder="Escribe el tipo del platillo"
-              [(ngModel)]="dishService.selectedDish.type"
-            />
+            <input type="text" name="type" class="form-control" placeholder="Escribe el tipo del platillo"
+              [(ngModel)]="dishService.selectedDish.type" />
           </div>
 
           <div class="form-group">
-            <input
-              type="number"
-              name="cost"
-              class="form-control"
-              placeholder="Escribe el precio del platillo"
-              [(ngModel)]="dishService.selectedDish.cost"
-            />
+            <input type="number" name="cost" class="form-control" placeholder="Escribe el precio del platillo"
+              [(ngModel)]="dishService.selectedDish.cost" />
           </div>
 
           <div class="form-group">
-            <input
-              type="number"
-              name="benefict"
-              class="form-control"
-              placeholder="Escribe el beneficio del platillo"
-              [(ngModel)]="dishService.selectedDish.benefict"
-            />
+            <input type="number" name="benefict" class="form-control" placeholder="Escribe el beneficio del platillo"
+              [(ngModel)]="dishService.selectedDish.benefict" />
           </div>
 
           <div class="form-group">
-            <input
-              type="text"
-              name="description"
-              class="form-control"
-              placeholder="Escribe la descripcion del platillo"
-              [(ngModel)]="dishService.selectedDish.description"
-            />
+            <input type="text" name="description" class="form-control" placeholder="Escribe la descripcion del platillo"
+              [(ngModel)]="dishService.selectedDish.description" />
           </div>
 
-          <button
-            (click) ="resetForm(dishForm)"
-            class="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
+          <button (click)="resetForm(dishForm)" class="btn waves-effect waves-light">
             Limpiar datos
           </button>
-          <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
+          <button class="btn waves-effect waves-light" type="submit" name="action">
             Enviar datos
             <i class="material-icons right">send</i>
           </button>
@@ -75,7 +41,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <table class="highlight" contenteditable="false" >
+    <table class="highlight" contenteditable="false">
       <thead>
         <th>Nombre</th>
         <th>Tipo</th>
@@ -85,17 +51,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let dish of dishService.dishesArray">
-          <td >{{ dish.name }}</td>
-          <td >{{ dish.type }}</td>
-          <td >{{ dish.cost }}</td>
-          <td >{{ dish.description }}</td>
+          <td>{{ dish.name }}</td>
+          <td>{{ dish.type }}</td>
+          <td>{{ dish.cost }}</td>
+          <td>{{ dish.description }}</td>
           <td>
-            <a class="waves-effect waves-light btn-small" (click)="editDish(dish)"
-              ><i class="material-icons left">edit</i></a
-            >
-            <a class="waves-effect waves-light btn-small" (click)="deleteDish(dish._id)"
-              ><i class="material-icons left">delete</i></a
-            >
+            <a class="waves-effect waves-light btn-small" (click)="editDish(dish)"><i
+                class="material-icons left">edit</i></a>
+            <a class="waves-effect waves-light btn-small" (click)="deleteDish(dish._id)"><i
+                class="material-icons left">delete</i></a>
           </td>
         </tr>
       </tbody>

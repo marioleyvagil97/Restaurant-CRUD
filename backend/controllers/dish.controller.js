@@ -1,61 +1,54 @@
-const { stringify } = require('querystring');
-const dish = require('../models/dish');
+const { stringify } = require("querystring");
+const dish = require("../models/dish");
 
 const dishController = {};
 
+dishController.getDishes = async (req, res) => {
+  const dishes = await dish.find();
+  res.json(dishes);
+};
 
-dishController.getDishes = async (req,res)=>{
-   const dishes = await dish.find();
-   res.json(dishes);
+dishController.createDish = async (req, res) => {
+  const newDish = new dish(req.body);
+  console.log(newDish);
+  await newDish.save();
+  res.json({
+    status: "Platillo guardado",
+  });
+};
 
-}
-
-dishController.createDish = async (req,res) =>{
-    const newDish = new dish (req.body);
-    console.log(newDish);
-    await newDish.save();
-    res.json({
-        'status':'Platillo guardado'
-    });
-
-}
-
-dishController.getDish = async (req,res) =>{
+dishController.getDish = async (req, res) => {
   const id = req.params.id;
 
-  const d = await dish.findOne({id:id})
+  const d = await dish.findOne({ id: id });
 
   console.log(d);
- // const foundDish = await dish.findById(req.params.id);
+  // const foundDish = await dish.findById(req.params.id);
   res.json(d);
- 
-}
+};
 
-dishController.updateDish = async (req,res) =>{
+dishController.updateDish = async (req, res) => {
   const _id = req.params.id;
 
-  const upDish ={
-    type:req.body.type,
-    name:req.body.name,
-    cost:req.body.cost,
-    description:req.body.description,
-    benefict:req.body.benefict
-  }  
+  const upDish = {
+    type: req.body.type,
+    name: req.body.name,
+    cost: req.body.cost,
+    description: req.body.description,
+    benefict: req.body.benefict,
+  };
 
- await dish.findByIdAndUpdate(_id,{$set:upDish});
+  await dish.findByIdAndUpdate(_id, { $set: upDish });
 
-  res.json({status:'Platillo actualizado'});
-}
+  res.json({ status: "Platillo actualizado" });
+};
 
-
-dishController.deleteDish = async (req,res) =>{
-  
+dishController.deleteDish = async (req, res) => {
   const _id = req.params.id;
 
-   await dish.findByIdAndDelete(_id);
+  await dish.findByIdAndDelete(_id);
 
-  res.json({status:'Platillo eliminado'});
-}
-
+  res.json({ status: "Platillo eliminado" });
+};
 
 module.exports = dishController;
