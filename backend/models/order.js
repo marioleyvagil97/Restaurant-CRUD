@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const orderSchema = new Schema({
-    id:{type:String, require:true},
-    clientName:{type:String, require:true},
-    productList:{type:Array, require:true},
-    payed:{type:Boolean, require:true}
+    id:{type:String},
+    clientName:{type:String},
+    productList:{type:Array},
+    payed:{type:Boolean}
 });
 
 module.exports = mongoose.model('orders', orderSchema,);

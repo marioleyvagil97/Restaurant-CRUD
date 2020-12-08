@@ -7,11 +7,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DishesComponent } from './components/dishes/dishes.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DishesComponent
+    DishesComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

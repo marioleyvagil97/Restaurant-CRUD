@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col md 4">
+        <div class="card-body">
+            <form #orderForm="ngForm" (ngSubmit)="addOrder(orderForm)">
+
+                <input type="hidden" name="_id" [(ngModel)]="orderService.selectedOrder._id">
+                <div class="form-group">
+                    <input type="text" name="clientName" class="form-control" placeholder="Nombre del cliente"
+                        [(ngModel)]="orderService.selectedOrder.clientName">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="productList" class="form-control" placeholder="Platillos"
+                        [(ngModel)]="orderService.selectedOrder.productList">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="payed" class="form-control" placeholder="Pagado o Pendiente"
+                        [(ngModel)]="orderService.selectedOrder.payed">
+                </div>
+
+                <!--
+
+                    <div class="form-group">
+                    <input type="boolean" class="form-control" placeholder="Pagado o Pendiente">
+                </div>
+                -->
+                <button class="btn btn-primary" (click)="resetForm(orderForm)">Limpiar</button>
+                <button class="btn btn-secondary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Orden</th>
+                    <th>Cliente</th>
+                    <th>Productos</th>
+                    <th>Pagado?</th>
+                    <th>chingados</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let order of orderService.orders">
+                    <td>{{order._id}}</td>
+                    <td>{{order.clientName}}</td>
+                    <td>{{order.productList}}</td>
+                    <td>{{order.payed}}</td>
+                    <td><button class="btn btn-secondary btn-sm" (click)="editOrder(order)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-secondary btn-sm" (click)="deleteOrder(order._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+
+                    </td>
+
+
+                    <!--
+                    <td>
+                    <a class="waves-effect waves-light btn-small" (click)="editOrder(order)"><i
+                        class="material-icons left">edit</i></a>
+                    <a class="waves-effect waves-light btn-small" (click)="deleteOrder(dish._id)"><i
+                        class="material-icons left">delete</i></a>
+                -->
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
