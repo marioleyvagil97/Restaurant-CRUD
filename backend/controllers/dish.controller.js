@@ -4,7 +4,7 @@ const dish = require("../models/dish");
 const dishController = {};
 
 dishController.getDishes = async (req, res) => {
-  const dishes = await dish.find();
+  const dishes = await dish.find().sort({"type": 1, "cost": 1});
   res.json(dishes);
 };
 

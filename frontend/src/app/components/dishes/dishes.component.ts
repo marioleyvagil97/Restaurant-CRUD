@@ -15,8 +15,6 @@ export class DishesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDishes();
-    
-   
   }
 
   getDishes() {
@@ -27,23 +25,34 @@ export class DishesComponent implements OnInit {
   }
 
   addDish(form: NgForm) {
-    if (form.value._id) {
-      this.dishService.putDish(form.value).subscribe(
-        (res) => {
-          console.log(res);
-          this.getDishes();
-          form.reset();
-        },
-        (err) => console.error(err)
-      );
+    let isnum = /^\d+$/.test(String(form.value.cost));
+    let isnum2 = /^\d+$/.test(String(form.value.benefict));
+    let blank1 = form.value.name.trim.length;
+    let blank2 = form.value.type.trim.length;
+    let blank3 = form.value.description.trim.length;
+
+    if (!isnum || !isnum2 || blank1 || blank2 || blank3) {
+      alert('No se puede hacer el registro con letras en el costo o beneficio');
     } else {
-      this.dishService.postDish(form.value).subscribe(
-        (res) => {
-          console.log(res);
-          this.getDishes();
-        },
-        (err) => console.error(err)
-      );
+      if (form.value._id) {
+        this.dishService.putDish(form.value)?.subscribe(
+          (res) => {
+            console.log(res);
+            this.getDishes();
+            form.reset();
+          },
+          (err) => console.error(err)
+        );
+      } else {
+        this.dishService.postDish(form.value)?.subscribe(
+          (res) => {
+            console.log(res);
+            this.getDishes();
+            form.reset();
+          },
+          (err) => console.error(err)
+        );
+      }
     }
   }
 
@@ -51,7 +60,6 @@ export class DishesComponent implements OnInit {
     if (confirm('Estas seguro de eliminar el platillo?')) {
       this.dishService.deleteDish(id);
     }
-    
   }
 
   editDish(dish: Dish) {
