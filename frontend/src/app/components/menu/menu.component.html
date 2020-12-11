@@ -1,0 +1,22 @@
+<div id="row">
+    <a class="waves-effect waves-light btn-small" routerLink="/dishes"><i
+        class="material-icons center">edit</i></a>
+    <div id="col-md-8">
+        <table class="highlight" contenteditable="false">
+            <thead>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dish of dishService.dishesArray">
+                    <td>{{ dish.name }}</td>
+                    <td>{{ dish.type }}</td>
+                    <td>{{ dish.description }}</td>
+                    <td>{{ dish.cost }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

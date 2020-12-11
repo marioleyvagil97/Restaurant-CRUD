@@ -2,6 +2,8 @@
   <div class="col-md-4">
     <div class="card">
       <div class="card-body">
+        <a class="waves-effect waves-light btn-small" routerLink='/'><i
+          class="material-icons center">arrow_back</i></a>
         <form #dishForm="ngForm" (ngSubmit)="addDish(dishForm)">
           <input type="hidden" name="_id" [(ngModel)]="dishService.selectedDish._id">
           <div class="form-group">
