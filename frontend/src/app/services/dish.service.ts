@@ -26,7 +26,7 @@ export class DishService {
   }
 
   putDish(dish: Dish) {
-    return this.http.put(this.URL_API + `/${dish._id}`, dish); 
+    return this.http.put(this.URL_API + `/${dish._id}`, dish);
   }
 
   deleteDish(id: string) {
@@ -35,11 +35,9 @@ export class DishService {
       .then((res) => {
         console.log(res);
 
-        for (var i = 0; i <= this.dishesArray.length; i++) {
-          if (this.dishesArray[i]._id == id) {
-            this.dishesArray.splice(i);
-          }
-        }
+        this.getDishes().subscribe((res) => {
+          this.dishesArray = res;
+        });
       });
   }
 }
