@@ -2,7 +2,7 @@ export class Dish {
 
     constructor(){
 
-        this._id='';
+        
         this.type = '';
         this.name = '';
         this.cost = 0;
@@ -12,7 +12,7 @@ export class Dish {
     }
 
 
-    _id: string ;
+    _id: string | any ;
     type: string ;
     name: string ;
     cost: number ;

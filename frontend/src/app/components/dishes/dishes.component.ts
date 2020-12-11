@@ -15,6 +15,7 @@ export class DishesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDishes();
+   
   }
 
   getDishes() {
@@ -47,14 +48,9 @@ export class DishesComponent implements OnInit {
 
   deleteDish(id: string) {
     if (confirm('Estas seguro de eliminar el platillo?')) {
-      this.dishService.deleteDish(id).subscribe(
-        (res) => {
-          console.log(res);
-          this.getDishes();
-        },
-        (err) => console.error(err)
-      );
+      this.dishService.deleteDish(id);
     }
+    
   }
 
   editDish(dish: Dish) {
