@@ -28,13 +28,24 @@ export class DishService {
   }
 
   postDish( dish: Dish){
+    let isnum = /^\d+$/.test(String(dish.cost));
+    let isnum2 =/^\d+$/.test(String(dish.benefict));
+    let blank1 = (dish.name.trim).length;
+    let blank2 = (dish.type.trim).length;
+    let blank3 = (dish.description.trim).length;
+    console.log(blank1,blank2,blank3);
+    var check = false
 
-    if(dish.name.trim.length == 0 || dish.type.trim.length == 0 || dish.description.trim.length == 0){
-      alert("No se puede hacer el registro con campos vacios");
-      
+
+  
+    if(!isnum  || !isnum2   ){
+      alert("No se puede hacer el registro con letras en el costo o beneficio");
+    
     }else{
-      return this.http.post(this.URL_API, dish);
+      return this.http.post(this.URL_API, dish); ;
+
     }
+
 
   }
 

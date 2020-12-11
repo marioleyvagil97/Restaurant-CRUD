@@ -5,9 +5,9 @@ export class Dish {
         
         this.type = '';
         this.name = '';
-        this.cost = 0;
+        this.cost = '';
         this.description = '';
-        this.benefict = 0;
+        this.benefict = '';
 
     }
 
@@ -15,7 +15,7 @@ export class Dish {
     _id: string | any ;
     type: string ;
     name: string ;
-    cost: number ;
+    cost: String ;
     description: string ;
-    benefict: number ;
+    benefict: String ;
 }

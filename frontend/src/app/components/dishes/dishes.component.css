@@ -1,0 +1,30 @@
+#edit{
+    margin-right: 15px;
+   
+}
+#delete{
+    background-color: orangered;
+    margin: auto;
+    
+}
+i{
+    margin: auto;
+}
+#send{
+margin-left: 25px;
+margin-top: 10px;
+margin-bottom: 10px;
+
+}
+#clean{
+    margin-left: 33.5%;
+    background-color: gray;
+    margin-top: 10px;
+margin-bottom: 10px;
+}
+div.form-group{
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
